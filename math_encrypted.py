@@ -43,5 +43,13 @@ def generate_prime(bit_length: int) -> int:
     return prime
 
 
+def gcd(a, b):
+    # find gcd via long division method
+    while b != 0:
+        a, b = b, a % b
+
+    return a
+
+
 if __name__ == '__main__':
     print(generate_prime(40))
