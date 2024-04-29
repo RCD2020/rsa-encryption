@@ -49,6 +49,12 @@ class TestMathEncrypted(unittest.TestCase):
         self.assertTrue(unit.is_prime(unit.generate_prime(64), accuracy=20))
         self.assertTrue(unit.is_prime(unit.generate_prime(128), accuracy=100))
 
+    def test_gcd(self):
+        
+        # check values
+        self.assertEqual(unit.gcd(96, 128), 32)
+        self.assertEqual(unit.gcd(22, 26), 2)
+        
 
 if __name__ == '__main__':
     unittest.main()
