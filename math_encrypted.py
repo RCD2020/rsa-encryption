@@ -5,7 +5,7 @@ Apr 26, 2024
 from random import randint, randrange
 
 
-def is_prime(num, accuracy):
+def is_prime(num: int, accuracy: int) -> bool:
     if num == 2 or num == 3:
         return True
     if num <= 1 or num % 2 == 0:
@@ -33,11 +33,15 @@ def is_prime(num, accuracy):
     return True
 
 
-def generate_prime(bit_length):
-    accuracy = (bit_length * .35) // 1
+def generate_prime(bit_length: int) -> int:
+    accuracy = int((bit_length * .35) // 1)
 
     prime = randint(2 ** (bit_length - 1), 2 ** bit_length)
-    while not is_prime(prime):
+    while not is_prime(prime, accuracy):
         prime = randint(2**(bit_length-1), 2**bit_length)
     
     return prime
+
+
+if __name__ == '__main__':
+    print(type(is_prime(5, accuracy=5)))
