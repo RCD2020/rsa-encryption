@@ -6,10 +6,14 @@ class TestMathEncrypted(unittest.TestCase):
 
     def test_is_prime(self):
 
+        # returns bool
+        self.assertIsInstance(unit.is_prime(29, accuracy=5), bool)
+        self.assertIsInstance(unit.is_prime(24, accuracy=5), bool)
+
         # 1-3
         self.assertFalse(unit.is_prime(1, accuracy=5))
         self.assertTrue(unit.is_prime(2, accuracy=5))
-        self.assertFalse(unit.is_prime(3, accuracy=5))
+        self.assertTrue(unit.is_prime(3, accuracy=5))
 
         # small numbers
         self.assertTrue(unit.is_prime(7, accuracy=5))
@@ -28,7 +32,18 @@ class TestMathEncrypted(unittest.TestCase):
         self.assertFalse(unit.is_prime(8962940820022532954380979647822843129973348706621205180007201628206439308494875826174674526082748906884765625, accuracy=50))
 
     def test_generate_prime(self):
-        pass
+
+        # returns int
+        self.assertIsInstance(unit.generate_prime(10), int)
+        
+        # correct size
+        self.assertLess(unit.generate_prime(10), 2**10)
+        self.assertLess(unit.generate_prime(20), 2**20)
+
+        # is prime
+        self.assertTrue(unit.is_prime(unit.generate_prime(16), accuracy=5))
+        self.assertTrue(unit.is_prime(unit.generate_prime(64), accuracy=20))
+        self.assertTrue(unit.is_prime(unit.generate_prime(128), accuracy=100))
 
 
 if __name__ == '__main__':

@@ -44,4 +44,4 @@ def generate_prime(bit_length: int) -> int:
 
 
 if __name__ == '__main__':
-    print(type(is_prime(5, accuracy=5)))
+    print(generate_prime(40))
