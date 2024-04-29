@@ -35,6 +35,7 @@ class TestMathEncrypted(unittest.TestCase):
         self.assertFalse(unit.is_prime(1116046526345976973244076121086481993689310851521763126311899231751259377733001931971438730236525849, accuracy=50))
         self.assertFalse(unit.is_prime(8962940820022532954380979647822843129973348706621205180007201628206439308494875826174674526082748906884765625, accuracy=50))
 
+
     def test_generate_prime(self):
 
         # returns int
@@ -49,11 +50,24 @@ class TestMathEncrypted(unittest.TestCase):
         self.assertTrue(unit.is_prime(unit.generate_prime(64), accuracy=20))
         self.assertTrue(unit.is_prime(unit.generate_prime(128), accuracy=100))
 
+
     def test_gcd(self):
+
+        # check if int
+        self.assertIsInstance(unit.gcd(96, 128), int)
         
         # check values
         self.assertEqual(unit.gcd(96, 128), 32)
         self.assertEqual(unit.gcd(22, 26), 2)
+
+
+    def test_random_coprime(self):
+        
+        # check if int
+        self.assertIsInstance(unit.random_coprime(50), int)
+
+        # check values
+        self.assertEqual(unit.gcd(unit.random_coprime(2**16), 2**16), 1)
         
 
 if __name__ == '__main__':

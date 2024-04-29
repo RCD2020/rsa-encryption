@@ -43,12 +43,22 @@ def generate_prime(bit_length: int) -> int:
     return prime
 
 
-def gcd(a, b):
+def gcd(a: int, b: int) -> int:
     # find gcd via long division method
     while b != 0:
         a, b = b, a % b
 
     return a
+
+
+def random_coprime(num: int) -> int:
+    # finds a coprime number by generating random numbers and
+    # checking that the gcd is 1
+    coprime = randint(2, num - 1)
+    while gcd(coprime, num) != 1:
+        coprime = randint(2, num - 1)
+
+    return coprime
 
 
 if __name__ == '__main__':
