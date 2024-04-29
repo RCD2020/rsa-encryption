@@ -61,5 +61,17 @@ def random_coprime(num: int) -> int:
     return coprime
 
 
+def modular_inverse(a: int, m: int) -> int:
+    # the modular inverse is a number than can be used on a
+    # modular exponentiation result to get back the original number
+    # I do not understand how in the slightest
+    m0, x0, x1 = m, 0, 1
+    while a > 1:
+        q = a // m
+        m, a = a % m, m
+        x0, x1 = x1 - q * x0, x0
+    return x1 + m0 if x1 < 0 else x1
+
+
 if __name__ == '__main__':
     print(generate_prime(40))

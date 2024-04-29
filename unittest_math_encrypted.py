@@ -68,7 +68,18 @@ class TestMathEncrypted(unittest.TestCase):
 
         # check values
         self.assertEqual(unit.gcd(unit.random_coprime(2**16), 2**16), 1)
+
+
+    def test_modular_inverse(self):
         
+        # check if int
+        self.assertIsInstance(unit.modular_inverse(131, 288), int)
+
+        # check if correct
+        self.assertEqual(unit.modular_inverse(131, 288), 11)
+        self.assertEqual(unit.modular_inverse(11, 12), 11)
+        self.assertEqual(unit.modular_inverse(7, 11), 8)
+        self.assertEqual(unit.modular_inverse(3, 7), 5)
 
 if __name__ == '__main__':
     unittest.main()
