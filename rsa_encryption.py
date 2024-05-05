@@ -6,8 +6,12 @@ from math_encrypted import (generate_prime, random_coprime,
                             modular_inverse)
 
 
-def generate_keys(bit_length:int=128):
-    "Returns (public, private, modulus)"
+def generate_keys(bit_length:int=1024):
+    """
+    Returns (public, private, modulus)
+
+    bit_length 1024-2048 recommended for real encryption
+    """
 
     # choose prime numbers, p and q
     p, q = generate_prime(bit_length), generate_prime(bit_length)
@@ -50,7 +54,8 @@ def decrypt_text(data, private, modulus):
 
 
 if __name__ == '__main__':
-    public, private, modulus = generate_keys()
+    public, private, modulus = generate_keys(1024)
+    print(public, private, modulus)
     data = encrypt_text('test', public, modulus)
     print(data)
     print(decrypt_text(data, private, modulus))
