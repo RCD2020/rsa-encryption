@@ -8,14 +8,33 @@ Robert Davis
 <html>
     <head>
         <title>Index</title>
+
+        <script src="{{ url_for('static', filename='index.js') }}" defer></script>
     </head>
     <body>
         <h1>RSA Encryption</h1>
-        <div id="keys"></div>
+
+
+        <div id="keys">
+            <h2>Generate Keys</h2>
+            <form>
+                <label for="bit_length">Bit Length:</label>
+                <input
+                    type="number" min="10" max="2048" step="1"
+                    value="1024" id="bit_length" name="bit_length"
+                >
+                <input type="submit" id="generate">
+            </form>
+
+            <div id="output"></div>
+        </div>
+
 
         <div id="encrypt"></div>
 
+
         <div id="decrypt"></div>
+
 
         <div id="explanation"></div>
     </body>
