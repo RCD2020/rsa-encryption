@@ -15,21 +15,40 @@ Robert Davis
 
         <div id="keys">
             <h2>Generate Keys</h2>
+
             <form method="post" action="/">
                 <label for="bit_length">Bit Length:</label>
                 <input
                     type="number" min="10" max="2048" step="1"
-                    value="32" id="bit_length" name="bit_length"
+                    value="32" name="bit_length"
                 >
                 <input type="hidden" name="type" value="keys">
                 <input type="submit" id="generate">
             </form>
 
-            <div id="output">{{ keys }}</div>
+            <div id="key_output">{{ keys }}</div>
         </div>
 
 
-        <div id="encrypt"></div>
+        <div id="encrypt">
+            <h2>Encrypt Message</h2>
+
+            <form action="/" method="post">
+                <label for="message">Message:</label>
+                <input type="text" name="message" id="message">
+
+                <label for="public_key">Public:</label>
+                <input type="number" step="1" name="public_key">
+
+                <label for="modulus">Modulus:</label>
+                <input type="number" step="1" name="modulus">
+
+                <input type="hidden" name="type" value="encrypt">
+                <input type="submit" id="encrypt">
+            </form>
+
+            <div id="encrypt_output">{{ encrypted_message }}</div>
+        </div>
 
 
         <div id="decrypt"></div>

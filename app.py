@@ -5,7 +5,7 @@ Robert Davis
 
 from quart import Quart, render_template, request
 
-from rsa_encryption import generate_keys
+from rsa_encryption import generate_keys, encrypt_text
 
 
 app = Quart(__name__)
@@ -13,7 +13,8 @@ app = Quart(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 async def index():
-    keys = 'test'
+    keys = ''
+    encrypted_message = ''
 
     if request.method == 'POST' and (await request.form)['type'] == 'keys':
         bit_length = int((await request.form)['bit_length'])
@@ -23,8 +24,19 @@ async def index():
             'public': (public, modulus),
             'private': (private, modulus)
         }
+    
+    if request.method == 'POST' and (await request.form)['type'] == 'encrypt':
+        message = (await request.form)['message']
+        public = int((await request.form)['public_key'])
+        modulus = int((await request.form)['modulus'])
 
-    return await render_template('index.html', keys=keys)
+        encrypted_message = encrypt_text(
+            message, public, modulus
+        )
+
+    return await render_template(
+        'index.html', keys=keys, encrypted_message=encrypted_message
+    )
 
 
 if __name__ == '__main__':
