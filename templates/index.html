@@ -23,7 +23,7 @@ Robert Davis
                     value="32" name="bit_length"
                 >
                 <input type="hidden" name="type" value="keys">
-                <input type="submit" id="generate">
+                <input type="submit">
             </form>
 
             <div id="key_output">{{ keys }}</div>
@@ -35,7 +35,7 @@ Robert Davis
 
             <form action="/" method="post">
                 <label for="message">Message:</label>
-                <input type="text" name="message" id="message">
+                <input type="text" name="message">
 
                 <label for="public_key">Public:</label>
                 <input type="number" step="1" name="public_key">
@@ -44,14 +44,30 @@ Robert Davis
                 <input type="number" step="1" name="modulus">
 
                 <input type="hidden" name="type" value="encrypt">
-                <input type="submit" id="encrypt">
+                <input type="submit">
             </form>
 
             <div id="encrypt_output">{{ encrypted_message }}</div>
         </div>
 
 
-        <div id="decrypt"></div>
+        <div id="decrypt">
+            <h2>Decrypt Message</h2>
+
+            <form action="/" method="post">
+                <label for="encrypted">Encrypted Message:</label>
+                <input type="text" name="encrypted">
+
+                <label for="private_key">Private:</label>
+                <input type="number" step="1" name="private_key">
+
+                <label for="modulus">Modulus:</label>
+                <input type="number" step="1" name="modulus">
+
+                <input type="hidden" name="type" value="decrypt">
+                <input type="submit">
+            </form>
+        </div>
 
 
         <div id="explanation"></div>
