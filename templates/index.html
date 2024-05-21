@@ -24,8 +24,20 @@ Robert Davis
                 >
 
                 <input
+                    type="hidden" name="message"
+                    value="{{ message }}"
+                >
+                <input
+                    type="hidden" name="encrypted"
+                    value="{{ encrypted }}"
+                >
+                <input
                     type="hidden" name="encrypted_message"
                     value="{{ encrypted_message }}"
+                >
+                <input
+                    type="hidden" name="decrypted_message"
+                    value="{{ decrypted_message }}"
                 >
 
                 <input type="hidden" name="type" value="keys">
@@ -53,7 +65,7 @@ Robert Davis
                 <input type="text" name="message">
 
                 <label for="public_key">Public:</label>
-                <input type="number" step="1" name="public_key">
+                <input type="number" step="1" name="public">
 
                 <label for="modulus">Modulus:</label>
                 <input type="number" step="1" name="modulus">
@@ -74,7 +86,7 @@ Robert Davis
                 <input type="text" name="encrypted">
 
                 <label for="private_key">Private:</label>
-                <input type="number" step="1" name="private_key">
+                <input type="number" step="1" name="private">
 
                 <label for="modulus">Modulus:</label>
                 <input type="number" step="1" name="modulus">
