@@ -62,13 +62,35 @@ Robert Davis
 
             <form action="/" method="post">
                 <label for="message">Message:</label>
-                <input type="text" name="message">
+                <input type="text" name="message" value="{{ message }}">
 
                 <label for="public_key">Public:</label>
-                <input type="number" step="1" name="public">
+                <input
+                    type="number" step="1" name="public"
+                    value="{{ public }}"
+                >
 
                 <label for="modulus">Modulus:</label>
-                <input type="number" step="1" name="modulus">
+                <input
+                    type="number" step="1" name="modulus"
+                    value="{{ modulus }}"
+                >
+
+                <input type="hidden" name="private" value="{{private}}">
+                <input type="hidden"
+                    name="encrypted" value="{{ encrypted }}"
+                >
+                <input type="hidden"
+                    name="encrypted_message"
+                    value="{{ encrypted_message }}"
+                >
+                <input type="hidden"
+                    name="decrypted_message"
+                    value="{{ decrypted_message }}"
+                >
+                <input type="hidden"
+                    name="bit_length" value="{{ bit_length }}"
+                >
 
                 <input type="hidden" name="type" value="encrypt">
                 <input type="submit">
