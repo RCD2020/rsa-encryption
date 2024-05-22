@@ -4,7 +4,6 @@ Robert Davis
 '''
 
 from quart import Quart, render_template, request
-from json import loads as json_loads
 
 from rsa_encryption import generate_keys, encrypt_text, decrypt_text
 
