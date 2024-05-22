@@ -66,13 +66,13 @@ Robert Davis
 
                 <label for="public_key">Public:</label>
                 <input
-                    type="number" step="1" name="public"
+                    type="text" step="1" name="public"
                     value="{{ public }}"
                 >
 
                 <label for="modulus">Modulus:</label>
                 <input
-                    type="number" step="1" name="modulus"
+                    type="text" step="1" name="modulus"
                     value="{{ modulus }}"
                 >
 
@@ -105,13 +105,37 @@ Robert Davis
 
             <form action="/" method="post">
                 <label for="encrypted">Encrypted Message:</label>
-                <input type="text" name="encrypted">
+                <input type="text"
+                    name="encrypted" value="{{ encrypted_message }}"
+                >
 
                 <label for="private_key">Private:</label>
-                <input type="number" step="1" name="private">
+                <input type="text"
+                    step="1" name="private" value="{{ private }}"
+                >
 
                 <label for="modulus">Modulus:</label>
-                <input type="number" step="1" name="modulus">
+                <input type="text"
+                    step="1" name="modulus" value="{{ modulus }}"
+                >
+
+                <input type="hidden"
+                    name="public" value="{{ public }}"
+                >
+                <input type="hidden"
+                    name="message" value="{{ message }}"
+                >
+                <input type="hidden"
+                    name="encrypted_message"
+                    value="{{ encrypted_message }}"
+                >
+                <input type="hidden"
+                    name="decrypted_message"
+                    value="{{ decrypted_message }}"
+                >
+                <input type="hidden"
+                    name="bit_length" value="{{ bit_length }}"
+                >
 
                 <input type="hidden" name="type" value="decrypt">
                 <input type="submit">
