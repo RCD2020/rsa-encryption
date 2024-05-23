@@ -8,6 +8,13 @@ Robert Davis
 <html>
     <head>
         <title>Index</title>
+
+        <script>
+            function copy_text(id) {
+                var text = document.getElementById(id).innerText;
+                navigator.clipboard.writeText(text);
+            }
+        </script>
     </head>
     <body>
         <h1>RSA Encryption</h1>
@@ -34,13 +41,22 @@ Robert Davis
 
             <div id="key_output">
                 <h3>Public Key</h3>
-                <p>{{ public }}</p>
+                <p id="public">{{ public }}</p>
+                {% if public %}
+                <button onclick="copy_text('public')">Copy</button>
+                {% endif %}
 
                 <h3>Private Key</h3>
-                <p>{{ private }}</p>
+                <p id="private">{{ private }}</p>
+                {% if private %}
+                <button onclick="copy_text('private')">Copy</button>
+                {% endif %}
 
                 <h3>Modulus</h3>
-                <p>{{ modulus }}</p>
+                <p id="modulus">{{ modulus }}</p>
+                {% if modulus %}
+                <button onclick="copy_text('modulus')">Copy</button>
+                {% endif %}
             </div>
         </div>
 
@@ -85,6 +101,9 @@ Robert Davis
             </form>
 
             <div id="encrypt_output">{{ encrypted_message }}</div>
+            {% if encrypted_message %}
+            <button onclick="copy_text('encrypt_output')">Copy</button>
+            {% endif %}
         </div>
 
 
@@ -130,6 +149,9 @@ Robert Davis
             </form>
 
             <div id="decrypt_output">{{ decrypted_message }}</div>
+            {% if decrypted_message %}
+            <button onclick="copy_text('decrypt_output')">Copy</button>
+            {% endif %}
         </div>
 
 
