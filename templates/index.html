@@ -44,21 +44,21 @@ Robert Davis
             </form>
 
             <div id="key_output">
-                <h3>Public Key</h3>
-                <p id="public">{{ public }}</p>
                 {% if public %}
+                <h3>Public Key</h3>
+                <p id="public" class="output">{{ public }}</p>
                 <button onclick="copy_text('public')">Copy</button>
                 {% endif %}
 
-                <h3>Private Key</h3>
-                <p id="private">{{ private }}</p>
                 {% if private %}
+                <h3>Private Key</h3>
+                <p id="private" class="output">{{ private }}</p>
                 <button onclick="copy_text('private')">Copy</button>
                 {% endif %}
 
-                <h3>Modulus</h3>
-                <p id="modulus">{{ modulus }}</p>
                 {% if modulus %}
+                <h3>Modulus</h3>
+                <p id="modulus" class="output">{{ modulus }}</p>
                 <button onclick="copy_text('modulus')">Copy</button>
                 {% endif %}
             </div>
@@ -104,7 +104,7 @@ Robert Davis
                 <input type="submit">
             </form>
 
-            <div id="encrypt_output">{{ encrypted_message }}</div>
+            <div id="encrypt_output" class="output">{{ encrypted_message }}</div>
             {% if encrypted_message %}
             <button onclick="copy_text('encrypt_output')">Copy</button>
             {% endif %}
@@ -152,7 +152,7 @@ Robert Davis
                 <input type="submit">
             </form>
 
-            <div id="decrypt_output">{{ decrypted_message }}</div>
+            <div id="decrypt_output" class="output">{{ decrypted_message }}</div>
             {% if decrypted_message %}
             <button onclick="copy_text('decrypt_output')">Copy</button>
             {% endif %}
