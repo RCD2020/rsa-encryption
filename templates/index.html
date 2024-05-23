@@ -104,8 +104,8 @@ Robert Davis
                 <input type="submit">
             </form>
 
-            <div id="encrypt_output" class="output">{{ encrypted_message }}</div>
             {% if encrypted_message %}
+            <p id="encrypt_output" class="output">{{ encrypted_message }}</p>
             <button onclick="copy_text('encrypt_output')">Copy</button>
             {% endif %}
         </div>
@@ -152,8 +152,8 @@ Robert Davis
                 <input type="submit">
             </form>
 
-            <div id="decrypt_output" class="output">{{ decrypted_message }}</div>
             {% if decrypted_message %}
+            <p id="decrypt_output" class="output">{{ decrypted_message }}</p>
             <button onclick="copy_text('decrypt_output')">Copy</button>
             {% endif %}
         </div>
