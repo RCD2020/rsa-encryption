@@ -4,18 +4,21 @@ Robert Davis
 '''
 
 from quart import Quart, render_template, request
+import asyncio
+from concurrent.futures import ProcessPoolExecutor
 
 from rsa_encryption import generate_keys, encrypt_text, decrypt_text
 
 
 app = Quart(__name__)
+executor = ProcessPoolExecutor()
 
 
 @app.route('/', methods=['GET', 'POST'])
 async def index():
     public, private, modulus = [''] * 3
     message, encrypted, encrypted_message, decrypted_message = [''] * 4
-    bit_length = 32
+    bit_length = 2048
 
     if request.method == 'POST':
         form = await request.form
@@ -32,7 +35,10 @@ async def index():
         post_type = form.get('type')
 
         if post_type == 'keys':
-            public, private, modulus = generate_keys(bit_length)
+            loop = asyncio.get_event_loop()
+            public, private, modulus = await loop.run_in_executor(
+                executor, generate_keys, bit_length
+            )
     
         if post_type == 'encrypt':
             encrypted_message = encrypt_text(
